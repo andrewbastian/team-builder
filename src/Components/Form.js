@@ -1,63 +1,60 @@
-import React, {useState} from 'react';
+import React from 'react';
+import '../App.css';
+
+import {useState, useEffect} from 'react';
+
+const Form = props => {
+  const [member, setMember] = useState({
+    name: '',
+    email: '',
+    role: ''
+  });
 
 
+  const handleChange = event => {
+    setMember({...member, [event.target.name]:event.target.value});
+  }
 
- function Form() {
-
-
-   const [team, setMember] = useState({name:'', email:'', role:''})
-
-
-   const changeHandler = event => {
-     event.preventDefault();
-     console.log(event.target.value);
-     setMember({...team,[event.target.name]: event.target.value})
-   }
-
-   const submitForm= event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    console.log(event)
+
+    props.setTeam([member, ...props.team]);
+
+    setMember({
+      name:'',
+      email:'',
+      role:''
+    });
+  }
+
+  return (
+    <form onSubmit={event=>handleSubmit(event)}>
+      <label>
+        Name:
+        <input type='text' name='name' value={member.name} onChange={e=>handleChange(e)} />
+      </label>
+
+      <br/>
+
+      <label>
+        Email:
+        <input type='text' name='email' value={member.email} onChange={e=>handleChange(e)} />
+      </label>
+
+      <br/>
+
+      <label>
+        Role:
+        <input type='text' name='role' value={member.role} onChange={e=>handleChange(e)} />
+      </label>
+
+      <br/>
+
+      <button>Submit</button>
+    </form>
+  )
+
 }
-   return (
-   <div className="App">
-     <form onSubmit={submitForm}>
-
-         <label htmlFor='name'>Name
-         <input
-         type='text'
-         name='name'
-         placeholder='Enter name'
-         value={team.name}
-         onChange={changeHandler}
-         />
-         </label>
-
-         <label
-          htmlFor='email'>Email
-          <input
-          type='email'
-          name='email'
-          placeholder='valid email address'
-          value={team.email}
-          onChange={changeHandler}
-          />
-          </label>
-
-         <label
-         htmlFor='role'>Role
-         <input
-         type='text'
-         name='role'
-         placeholder='team role'
-         value={team.ro}
-         onChange={changeHandler}/>
-         </label>
 
 
-         <button type='submit'>Add member</button>
-
-     </form>
-   </div>
- );
- }
-  export default Form;
+export default Form;

@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -23,11 +26,37 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes Neon-spin {
+  0% {
     transform: rotate(0deg);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(36deg);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px;
+
   }
+  50%{
+    transform: rotate(-36deg);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+
+  }
+  100%{
+    transform: rotate(0);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px;
+
+  }
+}
+.form{
+  border: 2px solid black;
+  width: 50%;
+}
+.team{
+  border: 2px dotted black;
+  margin-bottom: 3rem;
+}
+h1{
+    animation: Neon-spin infinite 4s;
+    margin: 80px;
 }
